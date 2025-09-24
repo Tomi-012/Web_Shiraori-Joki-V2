@@ -1,31 +1,33 @@
-import { Poppins, Space_Grotesk } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
+import "./globals.css";
 
-// Inisialisasi font dari Google Fonts
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-poppins', // Nama variabel CSS
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: '--font-inter',
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['700'],
-  variable: '--font-space-grotesk', // Nama variabel CSS
+  variable: '--font-space-grotesk',
 });
 
-export const metadata = {
-  title: 'ShiraoriJokiPro | Jasa Joki Genshin & Honkai',
-  description: 'Layanan joki profesional untuk Genshin Impact dan Honkai: Star Rail. Aman, cepat, dan terpercaya.',
+export const metadata: Metadata = {
+  title: "Shiraori Joki Pro | Jasa Joki Profesional",
+  description: "Jasa joki profesional untuk Genshin Impact & Honkai: Star Rail. Aman, cepat, dan terpercaya.",
+  icons: {
+    icon: '/logo/Logo-4-cut.png',
+  },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="id">
-      {/* Menggabungkan variabel font ke dalam body */}
-      <body className={`${poppins.variable} ${spaceGrotesk.variable} font-poppins`}>
-        {children}
-      </body>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
